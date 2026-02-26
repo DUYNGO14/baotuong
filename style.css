@@ -1004,7 +1004,15 @@ ul { list-style: none; }
   border-top: 1px solid rgba(255,255,255,0.07);
   font-size: 0.82rem;
   color: rgba(255,255,255,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
+.footer-author {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+}
+.footer-author strong { color: var(--accent); font-weight: 600; }
 
 /* =====================================================
    ANIMATIONS
