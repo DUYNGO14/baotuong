@@ -1,0 +1,1093 @@
+/* =====================================================
+   THPT An Lương Đông – Báo Tường
+   Stylesheet
+   ===================================================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --primary: #1a3c6e;
+  --primary-light: #2d6aad;
+  --accent: #e8b923;
+  --accent-dark: #c99a14;
+  --red: #c0392b;
+  --green: #27ae60;
+  --purple: #8e44ad;
+  --text: #1a1a2e;
+  --text-light: #4a5568;
+  --bg: #f8f9ff;
+  --bg-dark: #0d1b2a;
+  --white: #ffffff;
+  --card-bg: #ffffff;
+  --shadow: 0 8px 32px rgba(26, 60, 110, 0.10);
+  --shadow-lg: 0 20px 60px rgba(26, 60, 110, 0.16);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ---------- Utility ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section { padding: 64px 0; }
+.section-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  background: rgba(45, 106, 173, 0.10);
+  padding: 4px 14px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.section-desc {
+  color: var(--text-light);
+  font-size: 1.08rem;
+  max-width: 560px;
+}
+.section-header.center { text-align: center; }
+.section-header.center .section-desc { margin: 0 auto; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--primary);
+  box-shadow: 0 4px 24px rgba(232, 185, 35, 0.4);
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(232, 185, 35, 0.5);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(13, 27, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: var(--transition);
+}
+.site-header.shrink { background: rgba(13, 27, 42, 0.97); }
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+.logo-emblem img { width: 100%; height: 100%; border-radius: 50%; }
+.logo-text { display: flex; flex-direction: column; }
+.school-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.school-motto {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.main-nav ul {
+  display: flex;
+  gap: 4px;
+}
+.main-nav a {
+  display: block;
+  padding: 7px 14px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.78);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.main-nav a:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.1);
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(160deg, rgba(13,27,42,0.88) 40%, rgba(26,60,110,0.75) 100%),
+    url('images/hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(232,185,35,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--bg-dark) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: 24px;
+  margin-top: 70px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,185,35,0.15);
+  border: 1px solid rgba(232,185,35,0.4);
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 20px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+  animation: fadeDown 0.7s ease both;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--accent), #fff5cc, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255,255,255,0.80);
+  margin-bottom: 36px;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.hero-scroll-indicator span {
+  display: block;
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  position: relative;
+}
+.hero-scroll-indicator span::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: scrollDot 1.6s infinite;
+}
+
+/* =====================================================
+   STATS BAR
+   ===================================================== */
+.stats-bar {
+  background: var(--bg-dark);
+  padding: 0;
+}
+.stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 22px 24px;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 32px;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.stat-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* =====================================================
+   TỔNG QUAN
+   ===================================================== */
+.tong-quan { background: var(--bg); }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.text-col { order: 0; }
+.image-col { order: 1; }
+.feature-list { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(232,185,35,0.2);
+}
+.image-card { position: relative; }
+.school-img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  height: 380px;
+}
+.image-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(26,60,110,0.08);
+}
+.image-badge span { font-size: 2rem; }
+.image-badge strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+.image-badge small { color: var(--text-light); font-size: 0.78rem; }
+
+/* =====================================================
+   VIDEO SECTION
+   ===================================================== */
+.video-section { background: var(--bg); }
+.video-wrapper {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(26,60,110,0.22);
+  border: 3px solid rgba(26,60,110,0.10);
+  background: var(--bg-dark);
+  aspect-ratio: 16 / 9;
+}
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: calc(var(--radius) - 3px);
+}
+/* Play overlay */
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(160deg, rgba(13,27,42,0.55) 0%, rgba(26,60,110,0.45) 100%);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+  border-radius: calc(var(--radius) - 3px);
+}
+.video-play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.play-btn {
+  width: 80px; height: 80px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 4px 16px rgba(232,185,35,0.4));
+}
+.play-btn svg { width: 100%; height: 100%; }
+.play-btn:hover { transform: scale(1.12); filter: drop-shadow(0 6px 20px rgba(232,185,35,0.6)); }
+.play-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+/* Caption */
+.video-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  background: var(--white);
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(26,60,110,0.07);
+}
+.video-caption span { font-size: 1.1rem; }
+
+
+/* =====================================================
+   LỊCH SỬ – TIMELINE
+   ===================================================== */
+.lich-su {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lich-su::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: rgba(232,185,35,0.05);
+  pointer-events: none;
+}
+.lich-su .section-label { color: var(--accent); background: rgba(232,185,35,0.12); }
+.lich-su .section-title { color: var(--white); }
+.lich-su .section-desc { color: rgba(255,255,255,0.65); }
+.timeline {
+  position: relative;
+  padding: 24px 0;
+  margin-top: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(232,185,35,0.5), transparent);
+}
+.timeline-item {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: calc(50% + 40px);
+  margin-bottom: 32px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.timeline-item.right {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: calc(50% + 40px);
+  transform: translateX(30px);
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(232,185,35,0.4);
+  border: 3px solid var(--accent);
+  z-index: 1;
+  transition: transform 0.3s;
+}
+.timeline-dot.active { background: var(--accent); box-shadow: 0 0 0 8px rgba(232,185,35,0.2); }
+.timeline-content {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  max-width: 400px;
+  transition: var(--transition);
+}
+.timeline-content:hover { background: rgba(255,255,255,0.10); transform: translateY(-3px); }
+.timeline-content.current { border-color: rgba(232,185,35,0.4); }
+.timeline-year {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: rgba(232,185,35,0.12);
+  padding: 3px 12px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+.timeline-content h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.timeline-content p { font-size: 0.9rem; color: rgba(255,255,255,0.68); line-height: 1.65; }
+
+/* =====================================================
+   THÀNH TÍCH
+   ===================================================== */
+.thanh-tich { background: var(--bg); }
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+.award-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(26,60,110,0.07);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(24px);
+  position: relative;
+  overflow: hidden;
+}
+.award-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+.award-card.featured::before { background: linear-gradient(90deg, var(--accent), var(--accent-dark)); }
+.award-card.visible { opacity: 1; transform: translateY(0); }
+.award-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.award-card.featured {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+  color: var(--white);
+}
+.award-card.featured h3, .award-card.featured p { color: rgba(255,255,255,0.9); }
+.award-icon { font-size: 2.6rem; margin-bottom: 16px; }
+.award-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+.award-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+.award-tag {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 30px;
+  color: var(--primary-light);
+  background: rgba(45, 106, 173, 0.1);
+}
+.award-tag.primary { color: var(--accent); background: rgba(232,185,35,0.15); }
+
+/* =====================================================
+   GIÁO VIÊN – BGH HIERARCHY
+   ===================================================== */
+.giao-vien {
+  background: linear-gradient(135deg, #f0f4ff 0%, var(--bg) 100%);
+}
+.bgh-hierarchy {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+/* Level wrapper */
+.bgh-level {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bgh-level-1 { justify-content: center; }
+.bgh-level-2 {
+  justify-content: center;
+  padding-left: 80px; 
+}
+/* Rank side label */
+.rank-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  opacity: 0.55;
+  user-select: none;
+  flex-shrink: 0;
+}
+/* Connector between levels */
+.hierarchy-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 4px 0;
+}
+.connector-line {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(26,60,110,0.35), rgba(45,106,173,0.35));
+}
+.connector-arrow {
+  font-size: 0.75rem;
+  color: var(--primary-light);
+  opacity: 0.5;
+  line-height: 1;
+}
+/* Shared card base */
+.teacher-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+  border: 1px solid rgba(26,60,110,0.07);
+  position: relative;
+}
+.teacher-card.principal {
+  background: linear-gradient(135deg, var(--primary), var(--bg-dark));
+  color: var(--white);
+  border-color: transparent;
+}
+.teacher-card.visible { opacity: 1; transform: translateY(0); }
+.teacher-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+/* Main (principal) card */
+.bgh-card-main {
+  width: 100%;
+  max-width: 700px;
+  padding: 28px 32px;
+  align-items: center;
+}
+/* Sub card */
+.bgh-card-sub {
+  width: 100%;
+  max-width: 560px;
+}
+/* Large avatar for principal */
+.teacher-avatar-lg {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+  border: 3px solid rgba(232,185,35,0.5);
+}
+/* Regular avatar */
+.teacher-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+/* Rank number badge */
+.rank-badge {
+  position: absolute;
+  top: -12px; left: -12px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+.rank-1 { background: linear-gradient(135deg, #c99a14, var(--accent)); border: 2px solid #fff8dc; }
+.rank-2 { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border: 2px solid #dde8f5; }
+/* Title row */
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.teacher-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: inherit;
+  margin-bottom: 0;
+}
+.bgh-card-main .teacher-info h3 { font-size: 1.25rem; color: var(--white); }
+.teacher-card.principal .teacher-info h3 { color: var(--white); }
+.teacher-desc {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  margin-top: 4px;
+}
+.teacher-card.principal .teacher-desc { color: rgba(255,255,255,0.72); }
+.role-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 3px 12px;
+  border-radius: 30px;
+  color: var(--primary-light);
+  background: rgba(45,106,173,0.12);
+  white-space: nowrap;
+}
+.principal-badge { color: var(--accent); background: rgba(232,185,35,0.2); }
+/* Responsive */
+@media (max-width: 600px) {
+  .bgh-level-2 { padding-left: 0; }
+  .rank-label { display: none; }
+  .bgh-card-main { padding: 20px; }
+  .teacher-avatar-lg { width: 72px; height: 72px; font-size: 1.2rem; }
+}
+
+
+/* =====================================================
+   HOẠT ĐỘNG – BENTO GRID
+   ===================================================== */
+.hoat-dong { background: var(--bg); }
+.activities-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+  margin-top: 32px;
+}
+.bento-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(24px);
+  border: 1px solid rgba(26,60,110,0.06);
+}
+.bento-card.big { grid-column: span 2; }
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+}
+.bento-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; right: -30px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  opacity: 0.06;
+  transition: var(--transition);
+}
+.bento-card:hover::after { transform: scale(2); opacity: 0.10; }
+.bento-card.visible { opacity: 1; transform: translateY(0); }
+.bento-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.bento-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.bento-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+.bento-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+.bento-tag {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 30px;
+  color: var(--primary-light);
+  background: rgba(45,106,173,0.09);
+}
+
+/* =====================================================
+   QUOTES
+   ===================================================== */
+.quotes-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+}
+.quotes-section .section-label { color: var(--accent); background: rgba(232,185,35,0.12); }
+.quotes-section .section-title { color: var(--white); }
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+.quote-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.quote-card.visible { opacity: 1; transform: translateY(0); }
+.quote-card:hover { background: rgba(255,255,255,0.10); transform: translateY(-4px); }
+.quote-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 18px;
+}
+.quote-text::before {
+  content: '"';
+  position: absolute;
+  left: 0; top: -6px;
+  font-size: 2.5rem;
+  font-family: var(--font-display);
+  color: var(--accent);
+  line-height: 1;
+}
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.author-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.quote-author strong { display: block; color: var(--white); font-size: 0.92rem; }
+.quote-author small { color: rgba(255,255,255,0.55); font-size: 0.78rem; }
+
+/* =====================================================
+   LIÊN HỆ
+   ===================================================== */
+.lien-he { background: var(--bg); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.contact-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(26,60,110,0.07);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.contact-card.visible { opacity: 1; transform: translateY(0); }
+.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.contact-icon { font-size: 2.4rem; margin-bottom: 14px; }
+.contact-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.contact-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.site-footer {
+  background: var(--bg-dark);
+  color: rgba(255,255,255,0.75);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding: 48px 24px 36px;
+}
+.school-name-footer {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.footer-brand p { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.55); }
+.footer-links h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-quote blockquote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  line-height: 1.7;
+}
+.footer-quote cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-style: normal;
+}
+.footer-bottom {
+  text-align: center;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollDot {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+}
+
+.animate-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-left.visible, .animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+  .awards-grid { grid-template-columns: repeat(2, 1fr); }
+  .activities-bento { grid-template-columns: repeat(2, 1fr); }
+  .bento-card.big { grid-column: span 2; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-quote { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 70px; left: 0; right: 0;
+    background: rgba(13,27,42,0.98);
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; gap: 2px; }
+  .nav-toggle { display: block; }
+  .two-col { grid-template-columns: 1fr; gap: 40px; }
+  .image-col { order: -1; }
+  .image-badge { right: 0; bottom: -16px; }
+  .timeline::before { left: 20px; }
+  .timeline-item, .timeline-item.right {
+    justify-content: flex-start;
+    padding-left: 52px;
+    padding-right: 0;
+    transform: translateX(-20px);
+  }
+  .timeline-dot { left: 20px; }
+  .teachers-grid { grid-template-columns: 1fr; }
+  .teacher-card.principal { grid-column: span 1; }
+  .awards-grid { grid-template-columns: 1fr; }
+  .activities-bento { grid-template-columns: 1fr; }
+  .bento-card.big { grid-column: span 1; }
+  .quotes-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-quote { grid-column: span 1; }
+  .stats-grid { gap: 8px; }
+  .stat-divider { display: none; }
+  .stat-item { padding: 10px 20px; }
+  .section { padding: 52px 0; }
+}
+
+@media (max-width: 480px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+}
